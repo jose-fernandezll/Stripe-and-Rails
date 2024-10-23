@@ -1,0 +1,22 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+
+development:
+  <<: *default
+  database: stripe_and_rails_development
+
+test:
+  <<: *default
+  database: stripe_and_rails_test
+
+
+production:
+  <<: *default
+  database: stripe_and_rails_production
+  username: stripe_and_rails
+  password: <%= ENV["STRIPE_AND_RAILS_DATABASE_PASSWORD"] %>
