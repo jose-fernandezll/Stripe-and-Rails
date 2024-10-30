@@ -1,1 +1,1 @@
-Customer.create!(name: "Luke Skywalker", email: "luke@test.com")
+Customer.create!(name: "Ismael Fernandez", email: "josefernandez@gmail.com")

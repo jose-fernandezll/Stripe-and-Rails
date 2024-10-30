@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class Customer < ApplicationRecord
   validates :stripe_id, presence: true
 
@@ -9,8 +11,11 @@ class Customer < ApplicationRecord
   # y el self hace referencia al modelo customer lo que hace es setearle la stripe_id
 
   def create_on_stripe
-    params = { email: email, name: name }
-    response = Stripe::Customer.create(params)
+    response = Stripe::Customer.create({
+      name: name,
+      email: email
+    })
     self.stripe_id = response.id
+
   end
 end
