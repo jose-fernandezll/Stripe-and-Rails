@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   # se crean cuatros atributos de instancia debido a que no se guarda estos datos en la bd
-  attr_accessor :credit_card_number, :credit_card_exp_month, :credit_card_exp_year, :credit_card_cvv
+  attr_accessor :card_token
 
   belongs_to :customer
   has_one :payment
@@ -13,10 +13,7 @@ class Order < ApplicationRecord
   def create_payment
     params = {
       order_id: id,
-      credit_card_number: credit_card_number,
-      credit_card_exp_month: credit_card_exp_month,
-      credit_card_exp_year: credit_card_exp_year,
-      credit_card_cvv: credit_card_cvv
+      card_token: card_token
     }
     Payment.create!(params)
   end

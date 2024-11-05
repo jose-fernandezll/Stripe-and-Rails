@@ -11,6 +11,6 @@ class Api::V1::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:data).permit(:customer_id, :credit_card_number, :credit_card_exp_month, :credit_card_exp_year, :credit_card_cvv)
+    params.require(:data).permit(:customer_id, :card_token)
   end
 end
